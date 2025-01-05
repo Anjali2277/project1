@@ -18,3 +18,24 @@ Real-Time Weather Updates: Stay informed with up-to-date weather forecasts and a
 Donation Portal: Facilitate donations securely to support affected communities and relief organizations directly through the website.
 
 ![Screenshot (321)](https://github.com/user-attachments/assets/2cce3c81-fba0-4dd5-904c-6318ca1758a2)
+
+
+Feedback and Reporting: Empower users to provide feedback, report incidents, and request assistance, enhancing community engagement and responsiveness.
+
+![Screenshot (326)](https://github.com/user-attachments/assets/fac8bcf2-9bc2-4214-be10-bc2f8b951d3f)
+
+
+Dynamic Alerts: Visual alerts dynamically move across the screen to highlight urgent messages and updates, ensuring critical information reaches users promptly.
+
+How It Works:
+
+The website allows users to create accounts, customize settings, and receive personalized alerts based on their location and preferences. Whether accessing from a desktop, tablet, or mobile device, users can interact seamlessly with the platform to access real-time data, contribute to relief efforts, and stay informed during times of crisis.
+Demo project:- https://drive.google.com/file/d/1U5EKEjrSf-RQmZfOa8lsvPTF85vuzF8b/view?usp=drivesdk
+
+# Technologies Used
+- HTML5, CSS3, JavaScript
+- OpenWeatherMap API for weather updates
+- 
+# Acknowledgements
+- Icons from Font Awesome
+- Weather data provided by OpenWeatherMap 
