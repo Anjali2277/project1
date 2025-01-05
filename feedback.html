@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .message {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f0f0f0; padding: 20px;">
+    <div class="feedback-form">
+        <h2>Feedback Form</h2>
+        <form id="feedbackForm" method="post">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Feedback Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit Feedback">
+            </div>
+        </form>
+        <div id="responseMessage" class="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent page reload
+            
+            const formData = new FormData(event.target);
+            const feedback = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message')
+            };
+
+            const responseMessage = document.getElementById('responseMessage');
+            responseMessage.style.display = 'none'; // Hide any previous messages
+
+            try {
+                const response = await fetch('http://localhost:5000/submitFeedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(feedback),
+                });
+
+                if (response.ok) {
+                    responseMessage.textContent = 'Feedback submitted successfully!';
+                    responseMessage.className = 'message success';
+                    responseMessage.style.display = 'block';
+                    event.target.reset(); // Clear the form
+                } else {
+                    responseMessage.textContent = 'Failed to submit feedback. Please try again.';
+                    responseMessage.className = 'message error';
+                    responseMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                responseMessage.textContent = 'Something went wrong. Please try again later.';
+                responseMessage.className = 'message error';
+                responseMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

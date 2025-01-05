@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster responsive website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <img src="disasterlogo.png" alt="">
+        <div class="navigation">
+            <ul>
+                <img id="menu-close" src="cross.png" alt="">
+                <li><a href="home.html">Home</a></li>
+                <li class="dropdown" onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)"><a href="#">About &#9660;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Introduction</a></li>
+                        <li class="sub-menu" onmouseover="showSubmenu(this)" onmouseout="hideSubmenu(this)"><a href="#">Division &#9658;</a>
+                            <ul class="submenu-content">
+                                <li><a href="#">Policy and Plans</a></li>
+                                <li><a href="#">Operations and Communication</a></li>
+                                <li><a href="#">Capacity Building</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </li>
+    
+                <li  class="dropdown" onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)"><a href="#">Response &#9660;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">NDRF</a></li>
+                        <li><a href="#">SDRF</a></li>
+                        <li><a href="#">Civil Defence</a></li>
+                        <li><a href="#">Fire Service</a></li>
+                        <li><a href="#">Home Guards</a></li>
+                    </ul>
+                
+                </li>
+                <li class="dropdown" onmouseover="showDropdown(this)" onmouseout="hideDropdown(this)"><a href="#">Mitigation &#9660;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">MRDS</a></li>
+                        <li><a href="#">LRMS</a></li>
+                        <li><a href="#">FRMS</a></li>
+                        <li><a href="#">NERMP</a></li>
+                        <li><a href="#">School Safety Project</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Alerts</a></li>
+                <li><a href="donation.html">Donation</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li class="sign-in"><a href="sign.html">Sign In</a></li> 
+            </ul>
+            <img id="menu-btn" src="menu.png" alt="">
+        </div>
+    
+    </nav>
+    
+    <!------Home----->
+    <section id="home">
+        <div class="alert-container">
+            <div class="alert-content">
+                <span class="alert"> Contact the National Disaster Management Authority (NDMA) at 1078 for disaster-related assistance.</span>
+                <span class="alert"> National Disaster Response Force (NDRF) helpline is available at 011-24363260 or 9711077372.</span>
+                <span class="alert"> For weather updates and alerts, visit the Indian Meteorological Department website at www.imd.gov.in.</span>
+                <span class="alert"> In case of a fire emergency, dial 101.</span>
+                <span class="alert"> For police assistance, dial 100.</span>
+                <span class="alert"> For ambulance services, dial 102.</span>
+                <span class="alert"> Contact your State Disaster Management Authority (SDMA) for local disaster response.</span>
+                <span class="alert"> For general disaster-related queries, call the helpline at 1070.</span>
+            </div>
+        </div>
+        <!-- Button to fetch news -->
+       <div id="disaster-news-button-container">
+              <button id="fetch-news-btn">Recent Disaster News</button>
+       </div>
+       <div id="news-container"></div>
+
+        <h2>Your Partner in Emergency Preparedness and Recovery</h2>
+        <p> we provide comprehensive disaster response services to ensure your
+        community or organization is equipped to handle any crisis.We work hand-in-hand with local authorities, organizations, and 
+        residents to build stronger, more resilient communities prepared for any emergency</p>
+        <div class="btn">
+            <a id="current-weather-btn" class ="blue" href="weather.html">Current weather</a>
+            <a class="yellow" href="#">Alerts!!</a>
+        </div> 
+        
+    </section>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p>Emergency Hotline: 123-456-7890</p>
+                <p>Email:info@disasterresponse.org</p>
+            </div>
+            <div class="footer-section">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Shelter</a></li>
+                    <li><a href="#">Emergency Kit</a></li>
+                </ul>
+
+            </div>
+            <div class="footer-section">
+                <h3>Subscribe to our NewsLetter</h3>
+                <form class="newsletter">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button>Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-section">
+                <h3>Follow us</h3>
+                <div class="social-media">
+                    <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+                    <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+                </div>
+
+            </div>
+        </div>
+        <p class="footer-bottom">&copy;2024 Disaster Response. All rights reserved</p>
+    </footer>
+    <script>
+        $('#menu-btn').click(function(){
+            $('nav .navigation ul').addClass('active')
+        });
+        $('#menu-close').click(function(){
+            $('nav .navigation ul').removeClass('active')
+        });
+        function showDropdown(element) {
+             element.getElementsByClassName("dropdown-content")[0].style.display = "block";
+}
+        function hideDropdown(element) {
+
+            element.getElementsByClassName("dropdown-content")[0].style.display = "none";
+    }
+
+        function showSubmenu(element) {
+             element.getElementsByClassName("submenu-content")[0].style.display = "block";
+    }
+
+       function hideSubmenu(element) {
+             element.getElementsByClassName("submenu-content")[0].style.display = "none";
+    } 
+    
+
+    
+    </script>
+     <script src="weather.js"></script>
+     <script>
+        // Fetch disaster news from the backend
+        async function fetchDisasterNews() {
+            try {
+                const response = await fetch('http://localhost:5000/disasterNews');
+                const articles = await response.json();
+                
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = ''; // Clear previous news
+
+                if (articles.length === 0) {
+                    newsContainer.innerHTML = '<p>No recent disaster news available at the moment.</p>';
+                } else {
+                    articles.forEach(article => {
+                        // Create a new element for each article
+                        const articleElement = document.createElement('div');
+                        articleElement.classList.add('news-article');
+                        
+                        // Add content to the article element
+                        articleElement.innerHTML = `
+                            <h4><a href="${article.url}" target="_blank">${article.title}</a></h4>
+                            <p><strong>Source:</strong> ${article.source.name}</p>
+                            <p>${article.description}</p>
+                            <p><strong>Published on:</strong> ${new Date(article.publishedAt).toLocaleDateString()}</p>
+                        `;
+                        
+                        // Append the article to the news container
+                        newsContainer.appendChild(articleElement);
+                    });
+                }
+            } catch (err) {
+                console.error('Error fetching news:', err);
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = '<p>Error fetching disaster news. Please try again later.</p>';
+            }
+        }
+
+        // Attach event listener to the button
+        document.getElementById('fetch-news-btn').addEventListener('click', fetchDisasterNews);
+    </script>
+        
+    
+</body>
+</html>

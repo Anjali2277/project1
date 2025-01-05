@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Donation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body  style="display: flex; justify-content: center; align-items: center; height: 100vh; background-image: linear-gradient(#380036, #0cbaba);">
+    <div class="container">
+        <form action="" method="post">
+            <h2 style="font-size:26px;font-weight: bold;text-align: left;color:#fff;padding-bottom: 8px; border-bottom: 1px solid silver;">Donation Form</h2>
+            <div class="content">
+                <div class="input-box">
+                    <label for="name">Name:</label>
+                    <input type="text" placeholder="Enter full name" name="name" required>
+                </div>
+                <div class="input-box">
+                    <label for="address">Address:</label>
+                    <input placeholder="Enter address" name="address"  required>
+                </div>
+                <div class="input-box">
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="tel" placeholder="Enter mobile number" name="mobile" pattern="[0-9]{10}" required>
+                </div>
+                <div class="input-box">
+                    <label for="email">Email Address:</label>
+                    <input type="email" placeholder="Enter email address" name="email" required>
+                </div>
+                <div class="input-box">
+                    <label for="amount">Amount Donated:</label>
+                    <div class="currency-input">
+                        <select id="currency" name="currency" required>
+                            <option value="₹">₹</option>
+                            <option value="$">$</option>
+                            <option value="£">£</option>
+                            <option value="€">€</option>
+                        </select>
+                        <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <label for="paymentMethod">Payment Method:</label>
+                    <select name="paymentMethod" required>
+  
+                        <option value="upi">UPI</option>
+                        <option value="netbanking">Net Banking</option>
+                        <option value="paytm">Paytm</option>
+                        <option value="phonepay">PhonePe</option>
+                  </select>
+                </div>
+                <span class="gender-title">Gender</span>
+                <div class="gender-category">
+                    <input type="radio" name="gender" id="male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" id="female">
+                    <label for="female">Female</label>
+                    <input type="radio" name="gender" id="other">
+                    <label for="other">Other</label>
+                </div>
+                <div class="alert">
+                    <p>By clicking Donate Now, you agree to our<a href="#">Terms,</a><a href="#">Privacy Policy</a>and
+                    <a href="#">Cookies Policy</a>You may receive SMS notification from us.</p>
+                </div>
+                <div class="button-container">
+                    <button>Donate Now</button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('donationForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const donationData = Object.fromEntries(formData.entries());
+
+            const responseMessage = document.getElementById('responseMessage');
+            responseMessage.style.display = 'none';
+
+            try {
+                const response = await fetch('http://localhost:5000/submitDonation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(donationData),
+                });
+
+                if (response.ok) {
+                    responseMessage.textContent = 'Thank you for your donation!';
+                    responseMessage.className = 'message success';
+                    responseMessage.style.display = 'block';
+                    event.target.reset();
+                } else {
+                    responseMessage.textContent = 'Failed to submit donation. Please try again.';
+                    responseMessage.className = 'message error';
+                    responseMessage.style.display = 'block';
+                }
+            } catch (error) {
+                responseMessage.textContent = 'An error occurred. Please try again later.';
+                responseMessage.className = 'message error';
+                responseMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
