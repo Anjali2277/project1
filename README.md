@@ -34,8 +34,9 @@ Demo project:- https://drive.google.com/file/d/1U5EKEjrSf-RQmZfOa8lsvPTF85vuzF8b
 
 # Technologies Used
 - HTML5, CSS3, JavaScript
+- React , Nodejs , Mongodb
 - OpenWeatherMap API for weather updates
-- 
+  
 # Acknowledgements
 - Icons from Font Awesome
 - Weather data provided by OpenWeatherMap 
